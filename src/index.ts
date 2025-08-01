@@ -18,6 +18,8 @@ dotenv.config();
 const app = express();
 
 
+
+
 const PORT:number =parseInt(process.env.PORT || "3001", 10);
 const UPLOAD_DIR = process.env.UPLOAD_DIR || path.join(__dirname, '..', 'uploads');
 const HOST = process.env.HOST || '127.0.0.1';

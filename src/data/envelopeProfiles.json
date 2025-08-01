@@ -1,0 +1,28 @@
+[
+  {
+    "name": "DL конверт",
+    "fontSize": 8,
+    "width": 220,
+    "height": 110,
+    "linHeight": 4,
+    "isRemoveLastWord": true,
+    "padding": {
+      "top": 59,
+      "left": 150
+    },
+    "lineHeight": 4
+  },
+  {
+    "name": "VR конверт",
+    "fontSize": 8,
+    "width": 220,
+    "height": 110,
+    "linHeight": 4,
+    "isRemoveLastWord": true,
+    "padding": {
+      "top": 59,
+      "left": 150
+    },
+    "lineHeight": 4
+  }
+]

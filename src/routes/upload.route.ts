@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import multer from 'multer';
-import { uploadRoute } from '../../controller/uploadController';
-import {validateExcelFile} from "../../middleware/validateFile.middleware";
+import { uploadRoute } from '../controller/upload.controller';
+import {validateExcelFile} from "../middleware/validateFile.middleware";
 
 const router = Router();
 
