@@ -1,17 +1,18 @@
 import {validate, Validator} from "../services/validator.service";
+import {HttpError} from "../errors/HttpError";
 
 function numberField(defaultValue?: number) {
     return (value: any): number => {
         if (typeof value === 'number') return value;
         if (value === undefined && defaultValue !== undefined) return defaultValue;
-        throw new Error('должен быть числом');
+        throw new HttpError('должен быть числом', 400 , 'BAD_REQUEST');
     };
 }
 
 function stringField() {
     return (value: any): string => {
         if (typeof value === 'string') return value;
-        throw new Error('должен быть строкой');
+        throw new HttpError('должен быть строкой', 400, 'BAD_REQUEST');
     };
 }
 
@@ -19,7 +20,7 @@ function booleanField(defaultValue?: boolean) {
     return (value: any): boolean => {
         if (typeof value === 'boolean') return value;
         if (value === undefined && defaultValue !== undefined) return defaultValue;
-        throw new Error('должен быть boolean');
+        throw new HttpError('должен быть boolean', 400, 'BAD_REQUEST');
     };
 }
 
@@ -33,14 +34,12 @@ export type EnvelopeProfile = {
     name: string;
     width: number;
     height: number;
-    linHeight: number;
     fontSize: number;
-    isRemoveLastWord: boolean;
     lineHeight: number;
-    padding: {
-        top: number;
-        left: number;
-    };
+    isRemoveLastWord: boolean;
+    using:boolean;
+    paddingTop: number
+    paddingLeft: number;
 
 };
 
@@ -48,12 +47,10 @@ export const envelopeProfileSchema: Validator<EnvelopeProfile> = {
     name: stringField(),
     width: numberField(),
     height: numberField(),
-    linHeight: numberField(),
-    fontSize: numberField(),
     lineHeight: numberField(),
+    fontSize: numberField(),
     isRemoveLastWord: booleanField(true),
-    padding: objectField({
-        top: numberField(),
-        left: numberField(),
-    }),
+    using:booleanField(false),
+    paddingTop:numberField(),
+    paddingLeft:numberField(),
 };

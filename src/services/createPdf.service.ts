@@ -4,20 +4,18 @@ import fs from 'fs';
 import path from 'path';
 import { ExcelRow } from './xlsxReader.service';
 import {__DIRNAME} from "../index";
-import {defaultEnvelopeProfile, getProfileByName} from "./envProfile.service";
+import {defaultEnvelopeProfile, getUsingProfile} from "./envProfile.service";
 
 const MM_TO_PT = (mm: number) => mm * 2.83465;
 
 
-export async function generatePdfFromExcelData(data: ExcelRow[], name?:string): Promise<Uint8Array> {
+export async function generatePdfFromExcelData(data: ExcelRow[]): Promise<Uint8Array> {
     let profile;
-    if (!name) {
-        profile = defaultEnvelopeProfile;
-    } else profile = await getProfileByName(name);
-
+    profile = await getUsingProfile();
     if (!profile) {
         profile = defaultEnvelopeProfile;
     }
+    console.log(profile);
     const pdfDoc = await PDFDocument.create();
     pdfDoc.registerFontkit(fontKit);
 
@@ -30,8 +28,8 @@ export async function generatePdfFromExcelData(data: ExcelRow[], name?:string): 
     const fontSize = profile.fontSize;
     const lineHeight = font.heightAtSize(fontSize) + profile.lineHeight;
 
-    const startX = MM_TO_PT(profile.padding.left);
-    const startY = height - MM_TO_PT(profile.padding.top);
+    const startX = MM_TO_PT(profile.paddingLeft);
+    const startY = height - MM_TO_PT(profile.paddingTop);
     const maxLineWidth = MM_TO_PT(60);
 
     const removeLastWord = (text: string): string =>

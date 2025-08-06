@@ -11,13 +11,11 @@ export const defaultEnvelopeProfile: EnvelopeProfile = {
     fontSize: 8,
     width:220,
     height:110,
-    linHeight: 4,
     isRemoveLastWord: true,
+    using:false,
     lineHeight: 4,
-    padding:{
-        top: 59,
-        left: 150,
-    },
+    paddingTop:59,
+    paddingLeft:150,
 }
 
 const  __DIRNAME = __dirname;
@@ -29,8 +27,8 @@ export async function saveProfile(profile: EnvelopeProfile): Promise<void> {
     try {
         const file = await fs.readFile(filePath, 'utf-8');
         profiles = JSON.parse(file);
-    } catch (err: any) {
-        if (err.code !== 'ENOENT') throw new HttpError('Ошибка чтения файла', 500, 'INTERNAL_ERROR');
+    } catch (err) {
+        throw new HttpError('Ошибка чтения файла', 500, 'INTERNAL_ERROR');
     }
     const exists = profiles.some((p) => p.name === profile.name);
     if (exists) {
@@ -61,6 +59,27 @@ export async function getProfileByName(name: string): Promise<EnvelopeProfile | 
     const profile = profiles.find(p => p.name === name);
     if (!profile) return null;
     return profile
+}
+
+export async function getUsingProfile(): Promise<EnvelopeProfile | null> {
+    const file = await fs.readFile(filePath, 'utf-8');
+    const profiles: EnvelopeProfile[] | [] = JSON.parse(file);
+    const profile = profiles.find(p => p.using === true);
+    if (!profile) return null;
+    return profile
+}
+
+
+export async function updateEnvProfile(data:EnvelopeProfile[]): Promise<EnvelopeProfile[]> {
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2), 'utf-8');
+    try{
+        const file  = await fs.readFile(filePath, 'utf-8');
+        const data:EnvelopeProfile[] = JSON.parse(file);
+        return data
+
+    }catch(error){
+        throw new HttpError('Ошибка записи файла', 500, 'INTERNAL_ERROR');
+    }
 }
 
 
