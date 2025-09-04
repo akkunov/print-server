@@ -1,0 +1,14 @@
+[
+  {
+    "name": "DL конверт",
+    "fontSize": 8,
+    "width": 180,
+    "height": 105,
+    "linHeight": 4,
+    "isRemoveLastWord": true,
+    "using": true,
+    "paddingTop": 43,
+    "paddingLeft": 87,
+    "lineHeight": 3
+  }
+]

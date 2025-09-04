@@ -7,11 +7,8 @@ import routes from "./routes/index.js";
 import { fileURLToPath } from "node:url";
 import { dirname } from 'node:path';
 import { errorMiddleware } from "./middleware/errorMiddleware.js";
-
-
 export const __FILENAME = fileURLToPath(import.meta.url);
 export const __DIRNAME = dirname(__FILENAME);
-console.log(__DIRNAME);
 dotenv.config();
 const app = express();
 const PORT = parseInt(process.env.PORT || "3001", 10);

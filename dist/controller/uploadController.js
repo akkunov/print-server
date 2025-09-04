@@ -1,18 +1,7 @@
 import { parseExcel } from '../services/xlsxReader.service.js';
 import { HttpError } from '../errors/HttpError.js';
 import { generatePdfFromExcelData } from "../services/createPdf.service.js";
-// export const __filename = fileURLToPath(import.meta.url);
-// export const __dirname = dirname(__filename);
-//
-//
-//
-// const storage = multer.diskStorage({
-//     destination: path.join(__dirname, '../../uploads'),
-//     filename: (_req,
-//                file, cb) => {
-//         cb(null, `${Date.now()}-${file.originalname}`);
-//     },
-// });
+
 export async function uploadRoute(req, res, next) {
     try {
         const file = req.file;

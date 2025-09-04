@@ -1,37 +1,13 @@
 [
   {
     "name": "DL конверт",
-    "fontSize": 12,
+    "fontSize": 9,
     "width": 220,
     "height": 110,
-    "linHeight": 4,
-    "isRemoveLastWord": true,
-    "using": false,
-    "paddingTop": 59,
-    "paddingLeft": 150,
-    "lineHeight": 4
-  },
-  {
-    "name": "VR конверт",
-    "fontSize": 8,
-    "width": 220,
-    "height": 110,
-    "linHeight": 4,
-    "isRemoveLastWord": true,
+    "isRemoveLastWord": false,
     "using": true,
-    "paddingTop": 59,
+    "paddingTop": 58,
     "paddingLeft": 150,
-    "lineHeight": 4
-  },
-  {
-    "name": "SR Envelope",
-    "width": 220,
-    "height": 110,
-    "lineHeight": 5,
-    "fontSize": 12,
-    "isRemoveLastWord": true,
-    "using": false,
-    "paddingTop": 0,
-    "paddingLeft": 0
+    "lineHeight": 3
   }
 ]
