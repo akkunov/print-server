@@ -3,8 +3,8 @@ import fontKit from '@pdf-lib/fontkit';
 import fs from 'fs';
 import path from 'path';
 import { ExcelRow } from './xlsxReader.service.js';
-import {__DIRNAME} from "../index.js";
 import {defaultEnvelopeProfile, getUsingProfile} from "./envProfile.service.js";
+import {__dirname} from "../index.js";
 
 const MM_TO_PT = (mm: number) => mm * 2.83465;
 
@@ -19,7 +19,7 @@ export async function generatePdfFromExcelData(data: ExcelRow[]): Promise<Uint8A
     const pdfDoc = await PDFDocument.create();
     pdfDoc.registerFontkit(fontKit);
 
-    const fontPath = path.resolve(__DIRNAME, '../assets/fonts/RobotoMono-Regular.ttf');
+    const fontPath = path.resolve(__dirname, '../assets/fonts/RobotoMono-Regular.ttf');
     const fontBytes = fs.readFileSync(fontPath);
     const font = await pdfDoc.embedFont(fontBytes);
 

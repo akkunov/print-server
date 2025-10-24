@@ -1,5 +1,6 @@
 uploads
 .env
+.env.local
 node_modules
 .idea
 /dist/

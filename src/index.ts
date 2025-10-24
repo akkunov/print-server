@@ -2,27 +2,23 @@ import express from 'express';
 import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
-import dotenv from "dotenv";
 import routes from "./routes/index.js";
-import {fileURLToPath} from "node:url";
-import { dirname } from 'node:path';
 import {errorMiddleware} from "./middleware/errorMiddleware.js";
+import {fileURLToPath} from "url";
+import { dirname } from 'path';
 
 
-
-export const __FILENAME = fileURLToPath(import.meta.url);
-export const __DIRNAME = dirname(__FILENAME);
-console.log(__DIRNAME);
-dotenv.config();
+const __filename = fileURLToPath(import.meta.url);
+export const __dirname = dirname(__filename);
 
 const app = express();
-
 
 
 
 const PORT:number =parseInt(process.env.PORT || "3001", 10);
 const UPLOAD_DIR = process.env.UPLOAD_DIR || path.join(__dirname, '..', 'uploads');
 const HOST = process.env.HOST || '127.0.0.1';
+console.log(__dirname)
 
 app.use(cors({
     origin: true,
