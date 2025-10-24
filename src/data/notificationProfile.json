@@ -2,7 +2,7 @@
   {
     "name": "DL конверт",
     "fontSize": 8,
-    "width": 180,
+    "width": 145,
     "height": 105,
     "linHeight": 4,
     "isRemoveLastWord": true,
