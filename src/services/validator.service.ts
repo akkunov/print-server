@@ -1,4 +1,4 @@
-import {HttpError} from "../errors/HttpError";
+import {HttpError} from "../errors/HttpError.js";
 
 export type Validator<T> = {
     [K in keyof T]: (value: any) => T[K];

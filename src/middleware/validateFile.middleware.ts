@@ -1,6 +1,6 @@
 // middleware/validateFile.middleware.ts
 import { Request, Response, NextFunction } from 'express';
-import { HttpError } from '../errors/HttpError';
+import { HttpError } from '../errors/HttpError.js';
 
 export function validateExcelFile(req: Request, res: Response, next: NextFunction) {
     const file = req.file;

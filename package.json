@@ -4,7 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "tsc",
+    "build:ts": "tsc",
+    "build:copy": "cpx \"src/**/*.json\" dist",
+    "build": "npm run build:ts && npm run build:copy",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon --watch src --ext ts --exec \"tsx src/index.ts\""
@@ -17,6 +19,7 @@
     "@types/express": "^5.0.3",
     "@types/multer": "^2.0.0",
     "@types/node": "^24.0.15",
+    "cpx": "^1.5.0",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
     "tsx": "^4.20.3",

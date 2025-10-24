@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "ESNext",
-    "moduleResolution": "bundler",
+    "target": "ES2022", // или ES2020/ESNext
+    "module": "NodeNext", // или ES2020/ES2022/Node16/NodeNext
+    "moduleResolution": "NodeNext", // Изменено с "node16" на более общий или просто убрать (по умолчанию для commonjs)
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
-    "outDir": "dist"
+    "resolveJsonModule": true,
+    "outDir": "dist",
+    "rootDir": "src", // Добавлено
+    "forceConsistentCasingInFileNames": true // Добавлено
   },
   "include": ["src"]
 }

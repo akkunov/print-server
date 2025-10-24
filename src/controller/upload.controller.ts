@@ -1,8 +1,8 @@
 import {NextFunction, Request, Response} from 'express';
-import { parseExcel } from '../services/xlsxReader.service';
-import { HttpError } from '../errors/HttpError';
-import {generatePdfFromExcelData} from "../services/createPdf.service";
-import {generateNotePdfFromExcel} from "../services/createNotePdf.service";
+import { parseExcel } from '../services/xlsxReader.service.js';
+import { HttpError } from '../errors/HttpError.js';
+import {generatePdfFromExcelData} from "../services/createPdf.service.js";
+import {generateNotePdfFromExcel} from "../services/createNotePdf.service.js";
 
 export async function uploadRoute(req: Request, res: Response, next: NextFunction) {
     try {

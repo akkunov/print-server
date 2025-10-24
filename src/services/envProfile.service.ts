@@ -1,8 +1,8 @@
 import path from "path";
 import { promises as fs } from 'fs';
-import {__dirname} from "../utils";
-import {HttpError} from "../errors/HttpError";
-import {EnvelopeProfile} from "../schema/envelopeProfileSchema";
+import {__dirname} from "../utils/index.js";
+import {HttpError} from "../errors/HttpError.js";
+import {EnvelopeProfile} from "../schema/envelopeProfileSchema.js";
 
 
 

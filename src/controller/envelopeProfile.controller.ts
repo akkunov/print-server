@@ -1,7 +1,7 @@
 import {NextFunction, Request, Response} from 'express';
-import {getAllProfiles, saveProfile, updateEnvProfile} from "../services/envProfile.service";
-import {validate} from "../services/validator.service";
-import {EnvelopeProfile, envelopeProfileSchema} from "../schema/envelopeProfileSchema";
+import {getAllProfiles, saveProfile, updateEnvProfile} from "../services/envProfile.service.js";
+import {validate} from "../services/validator.service.js";
+import {EnvelopeProfile, envelopeProfileSchema} from "../schema/envelopeProfileSchema.js";
 
 
 export const createProfile = async (req: Request, res: Response, next:NextFunction) => {

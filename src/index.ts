@@ -3,10 +3,10 @@ import cors from 'cors';
 import path from 'path';
 import fs from 'fs';
 import dotenv from "dotenv";
-import routes from "./routes";
+import routes from "./routes/index.js";
 import {fileURLToPath} from "node:url";
 import { dirname } from 'node:path';
-import {errorMiddleware} from "./middleware/errorMiddleware";
+import {errorMiddleware} from "./middleware/errorMiddleware.js";
 
 
 

@@ -1,5 +1,5 @@
-import {validate, Validator} from "../services/validator.service";
-import {HttpError} from "../errors/HttpError";
+import {validate, Validator} from "../services/validator.service.js";
+import {HttpError} from "../errors/HttpError.js";
 
 function numberField(defaultValue?: number) {
     return (value: any): number => {

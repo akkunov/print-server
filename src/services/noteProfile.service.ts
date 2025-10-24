@@ -1,6 +1,6 @@
-import {EnvelopeProfile} from "../schema/envelopeProfileSchema";
+import {EnvelopeProfile} from "../schema/envelopeProfileSchema.js";
 import {promises as fs} from "fs";
-import {__dirname} from "../utils";
+import {__dirname} from "../utils/index.js";
 import path from "path";
 
 const  __DIRNAME = __dirname;

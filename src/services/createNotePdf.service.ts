@@ -2,9 +2,9 @@ import { PDFDocument, rgb } from 'pdf-lib';
 import fontKit from '@pdf-lib/fontkit';
 import fs from 'fs';
 import path from 'path';
-import { ExcelRow } from './xlsxReader.service';
-import {__DIRNAME} from "../index";
-import {defaultEnvelopeProfile, getUsingProfile} from "./noteProfile.service";
+import { ExcelRow } from './xlsxReader.service.js';
+import {__DIRNAME} from "../index.js";
+import {defaultEnvelopeProfile, getUsingProfile} from "./noteProfile.service.js";
 
 const MM_TO_PT = (mm: number) => mm * 2.83465;
 

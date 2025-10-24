@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import {createProfile, getAllProfile, updateProfile} from "../controller/envelopeProfile.controller";
+import {createProfile, getAllProfile, updateProfile} from "../controller/envelopeProfile.controller.js";
 
 const router = Router();
 
