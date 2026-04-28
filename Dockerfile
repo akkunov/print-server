@@ -1,8 +1,10 @@
 # 1. Базовый образ Node
 FROM node:20-alpine
 
+
 # 2. Рабочая директория
 WORKDIR /app
+COPY src/assets ./dist/assets
 
 # 3. Копируем package.json
 COPY package*.json ./
