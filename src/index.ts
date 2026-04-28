@@ -1,44 +1,22 @@
 import express from 'express';
 import cors from 'cors';
-import path from 'path';
-import fs from 'fs';
 import routes from "./routes/index.js";
-import {errorMiddleware} from "./middleware/errorMiddleware.js";
-import {fileURLToPath} from "url";
-import { dirname } from 'path';
-import dotenv from 'dotenv';
-
-
-
-const __filename = fileURLToPath(import.meta.url);
-export const __dirname = dirname(__filename);
+import { errorMiddleware } from "./middleware/errorMiddleware.js";
+import serverless from "serverless-http";
 
 const app = express();
 
-dotenv.config();
-
-const PORT:number =parseInt(process.env.PORT || "3001", 10);
-const UPLOAD_DIR = process.env.UPLOAD_DIR || path.join(__dirname, '..', 'uploads');
-const HOST = process.env.HOST || '0.0.0.0';
-
-app.use(cors({
-    origin: true,
-}));
+app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
-// Routes
 app.use(routes);
 app.use(errorMiddleware);
-app.get('/' , (req,res) => res.send('Hello World!') )
 
+app.get('/', (req, res) => {
+    res.send('Hello World!');
+});
 
-// // Ensure uploads directory exists
-// if (!fs.existsSync(UPLOAD_DIR)) {
-//     fs.mkdirSync(UPLOAD_DIR);
-// }
+// ❌ НИКАКОГО app.listen()
 
-app.listen(80,HOST,  () => {
-    console.log(PORT,HOST)
-} );
+export default serverless(app);
