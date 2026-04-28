@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { ExcelRow } from './xlsxReader.service.js';
 import {defaultEnvelopeProfile, getUsingProfile} from "./noteProfile.service.js";
-import {__dirname} from "../index.js";
+import {__dirname} from "../utils/index.js";
 
 const MM_TO_PT = (mm: number) => mm * 2.83465;
 
