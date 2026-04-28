@@ -34,10 +34,10 @@ app.use(errorMiddleware);
 app.get('/' , (req,res) => res.send('Hello World!') )
 
 
-// Ensure uploads directory exists
-if (!fs.existsSync(UPLOAD_DIR)) {
-    fs.mkdirSync(UPLOAD_DIR);
-}
+// // Ensure uploads directory exists
+// if (!fs.existsSync(UPLOAD_DIR)) {
+//     fs.mkdirSync(UPLOAD_DIR);
+// }
 
 app.listen(80,HOST,  () => {
     console.log(PORT,HOST)
