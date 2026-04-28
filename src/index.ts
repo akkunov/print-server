@@ -39,6 +39,6 @@ if (!fs.existsSync(UPLOAD_DIR)) {
     fs.mkdirSync(UPLOAD_DIR);
 }
 
-app.listen(PORT,HOST,  () => {
+app.listen(80,HOST,  () => {
     console.log(PORT,HOST)
 } );
