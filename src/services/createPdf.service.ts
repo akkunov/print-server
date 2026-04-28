@@ -30,7 +30,7 @@ export async function generatePdfFromExcelData(data: ExcelRow[]): Promise<Uint8A
     const pdfDoc = await PDFDocument.create();
     pdfDoc.registerFontkit(fontKit);
 
-    const fontPath = path.resolve(__dirname, '../assets/fonts/RobotoMono-Regular.ttf');
+    const fontPath = path.join(process.cwd(), 'src/assets/fonts/RobotoMono-Regular.ttf');
     const fontBytes = fs.readFileSync(fontPath);
     const font = await pdfDoc.embedFont(fontBytes);
 
