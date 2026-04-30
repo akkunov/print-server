@@ -1,12 +1,11 @@
 import {EnvelopeProfile} from "../schema/envelopeProfileSchema.js";
-import {promises as fs} from "fs";
-import {__dirname} from "../utils/index.js";
-import path from "path";
+import {HttpError} from "../errors/HttpError.js";
+import {readProfiles, writeProfiles} from "../repository/notification/index.js";
+import {randomUUID} from "node:crypto";
 
-const  __DIRNAME = __dirname;
-const filePath = path.resolve(__DIRNAME, '../data/notificationProfile.json');
 
 export const defaultEnvelopeProfile: EnvelopeProfile = {
+    id: '2',
     name: "DL конверт",
     fontSize: 9,
     width: 147,
@@ -18,11 +17,49 @@ export const defaultEnvelopeProfile: EnvelopeProfile = {
     paddingLeft: 36,
 }
 
+export async function saveProfile(profile: EnvelopeProfile): Promise<void> {
+
+    const profiles = await readProfiles();
+    const newProfile = {
+        ...profile,
+        id: randomUUID(), // ← добавили UID
+    };
+    profiles.push(newProfile);
+    try {
+        await writeProfiles(profiles);
+    } catch (err) {
+        throw new HttpError('Ошибка записи файла', 500, 'INTERNAL_ERROR');
+    }
+}
+
+export async function getAllProfiles(): Promise<EnvelopeProfile[]> {
+    try {
+        return await readProfiles();
+
+    } catch (err: any) {
+        if (err.code === 'ENOENT') return [];
+        throw err instanceof HttpError
+            ? err
+            : new HttpError('Ошибка чтения файла профилей', 500, 'INTERNAL_ERROR');
+    }
+}
 
 export async function getUsingProfile(): Promise<EnvelopeProfile | null> {
-    const file = await fs.readFile(filePath, 'utf-8');
-    const profiles: EnvelopeProfile[] | [] = JSON.parse(file);
-    const profile = profiles.find(p => p.using === true);
-    if (!profile) return null;
-    return profile
+    const profiles = await readProfiles()
+    return profiles.find(p => p.using) ?? null;
 }
+
+export async function updateProfile(data:EnvelopeProfile[]): Promise<EnvelopeProfile[]> {
+    await writeProfiles(data)
+    try{
+        return await readProfiles()
+
+    }catch(error){
+        throw new HttpError('Ошибка записи файла', 500, 'INTERNAL_ERROR');
+    }
+}
+
+
+
+
+

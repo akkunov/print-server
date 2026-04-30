@@ -7,7 +7,12 @@ export type ErrorType =
     | 'FILE_TOO_LARGE'
     | 'UNSUPPORTED_MEDIA_TYPE'
     | 'EXCEL_PARSE_ERROR'
-    | 'CUSTOM'; // для кастомных
+    | 'CUSTOM' // для кастомных
+    | 'NOT_IMPLEMENTED'
+    | 'CONFLICT'
+    | 'FORBIDDEN'
+    | 'BAD_FORMAT'
+    | 'BAD_JSON'
 
 export class HttpError extends Error {
     statusCode: number;

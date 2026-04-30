@@ -1,10 +1,10 @@
 [
   {
-    "name": "DL конверт",
+    "id": "3",
+    "name": "Уведомление",
     "fontSize": 8,
     "width": 145,
     "height": 105,
-    "linHeight": 4,
     "isRemoveLastWord": true,
     "using": true,
     "paddingTop": 43,

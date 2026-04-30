@@ -1,7 +1,8 @@
 import {NextFunction, Request, Response} from 'express';
-import {getAllProfiles, saveProfile, updateEnvProfile} from "../services/envProfile.service.js";
+
 import {validate} from "../services/validator.service.js";
 import {EnvelopeProfile, envelopeProfileSchema} from "../schema/envelopeProfileSchema.js";
+import {getAllProfiles, saveProfile, updateProfile,} from "../services/noteProfile.service.js";
 
 
 export const createProfile = async (req: Request, res: Response, next:NextFunction) => {
@@ -19,7 +20,7 @@ export const updateProfiles = async (req: Request, res: Response, next: NextFunc
     try {
         const profiles: EnvelopeProfile[] = req.body;
 
-        const data = await updateEnvProfile(profiles);
+        const data = await updateProfile(profiles);
 
         return res.status(200).json(data);
     } catch (error) {
@@ -27,10 +28,9 @@ export const updateProfiles = async (req: Request, res: Response, next: NextFunc
     }
 };
 
-
 export const getAllProfile = async (req: Request, res: Response, next:NextFunction) => {
+    console.log('note')
     try {
-        console.log(req.baseUrl)
         const profiles = await getAllProfiles();
         res.json(profiles);
     } catch (error) {

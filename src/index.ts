@@ -6,6 +6,7 @@ import routes from "./routes/index.js";
 import { errorMiddleware } from "./middleware/errorMiddleware.js";
 import { fileURLToPath } from "url";
 import dotenv from 'dotenv';
+import {setupSwagger} from "./utils/swagger.js";
 
 dotenv.config();
 
@@ -21,6 +22,7 @@ const HOST = process.env.HOST || '0.0.0.0';
 app.use(cors({ origin: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+setupSwagger(app);
 
 // ensure uploads
 fs.mkdirSync(UPLOAD_DIR, { recursive: true });
@@ -30,6 +32,7 @@ app.use(routes);
 
 // error handler LAST
 app.use(errorMiddleware);
+
 
 app.get('/', (req, res) => res.send('Hello World!'));
 

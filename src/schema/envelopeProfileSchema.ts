@@ -29,8 +29,7 @@ function objectField<T>(validator: Validator<T>) {
 }
 
 
-
-export type EnvelopeProfile = {
+export type EnvelopeProfileValidator = {
     name: string;
     width: number;
     height: number;
@@ -40,10 +39,22 @@ export type EnvelopeProfile = {
     using:boolean;
     paddingTop: number
     paddingLeft: number;
-
 };
 
-export const envelopeProfileSchema: Validator<EnvelopeProfile> = {
+export type EnvelopeProfile = {
+    id:string
+    name: string;
+    width: number;
+    height: number;
+    fontSize: number;
+    lineHeight: number;
+    isRemoveLastWord: boolean;
+    using:boolean;
+    paddingTop: number
+    paddingLeft: number;
+};
+
+export const envelopeProfileSchema: Validator<EnvelopeProfileValidator> = {
     name: stringField(),
     width: numberField(),
     height: numberField(),
